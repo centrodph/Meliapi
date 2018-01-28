@@ -1,0 +1,31 @@
+{
+  "name": "meliapi",
+  "version": "1.0.0",
+  "description": "meliapi",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "client": "npm start --prefix client",
+    "server": "nodemon index.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\" "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/centrodph/Meliapi.git"
+  },
+  "author": "Gerardo Perrucci",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/centrodph/Meliapi/issues"
+  },
+  "homepage": "https://github.com/centrodph/Meliapi#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.1",
+    "nodemon": "^1.12.1"
+  }
+}
