@@ -1,6 +1,69 @@
 body {
-  background: blue;
-  padding: 100px; }
+  margin: 0;
+  padding: 0;
+  background: #eeeeee; }
 
-#root {
-  background-color: red; }
+.clearfix {
+  clear: both;
+  width: 100%;
+  height: 1px; }
+
+::-webkit-input-placeholder {
+  color: #999999; }
+
+::-moz-placeholder {
+  color: #999999; }
+
+:-ms-input-placeholder {
+  color: #999999; }
+
+:-moz-placeholder {
+  color: #999999; }
+
+.header-component {
+  background: #ffe600;
+  padding: 7px 0; }
+
+.header-container {
+  max-width: 860px;
+  margin: 0 auto; }
+
+.logo {
+  width: 10%;
+  float: left; }
+  .logo img {
+    max-height: 34px; }
+
+.search-box-component {
+  width: 90%;
+  float: left; }
+  .search-box-component form {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex: 1; }
+  .search-box-component input {
+    width: 100%;
+    height: 34px;
+    padding: 0 13px;
+    border: none;
+    font-size: 18px;
+    -webkit-border-radius: 5px 0px 0px 5px;
+    -moz-border-radius: 5px 0px 0px 5px;
+    border-radius: 5px 0px 0px 5px; }
+  .search-box-component button {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: none;
+    background-color: #eeeeee;
+    background-image: url(./images/ic_Search@2x.png);
+    background-size: 18px 18px;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    -webkit-border-radius: 0px 5px 5px 0px;
+    -moz-border-radius: 0px 5px 5px 0px;
+    border-radius: 0px 5px 5px 0px; }
+    .search-box-component button:hover {
+      background-color: #dadada; }
