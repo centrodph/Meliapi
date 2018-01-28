@@ -11,6 +11,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Landing from './components/Landing';
 import ProductDetail from './components/ProductDetail';
+import SearchResult from './components/SearchResult';
 const store = createStore(applyMiddleware());
 
 ReactDOM.render(
@@ -19,9 +20,9 @@ ReactDOM.render(
       <div>
         <Header />
         <Switch>
+          <Route path="/items/:id" component={ProductDetail} />
+          <Route path="/items" component={SearchResult} />
           <Route path="/" component={Landing} />
-          <Route path="/" component={SearchResult} />
-          <Route path="/" component={ProductDetail} />
         </Switch>
         <Footer />
       </div>
