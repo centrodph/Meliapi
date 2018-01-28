@@ -20,9 +20,15 @@ ReactDOM.render(
       <div>
         <Header />
         <Switch>
-          <Route path="/items/:id" component={ProductDetail} />
-          <Route path="/items" component={SearchResult} />
-          <Route path="/" component={Landing} />
+          <Route
+            path={process.env.PUBLIC_PATH + '/items/:id'}
+            component={ProductDetail}
+          />
+          <Route
+            path={process.env.PUBLIC_PATH + '/items'}
+            component={SearchResult}
+          />
+          <Route path={process.env.PUBLIC_PATH + '/'} component={Landing} />
         </Switch>
         <Footer />
       </div>
