@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
 class SearchBox extends Component {
   constructor(props) {
@@ -7,11 +9,11 @@ class SearchBox extends Component {
     this.searchChangeHandler = this.searchChangeHandler.bind(this);
   }
   searchChangeHandler(event) {
-    console.log(event.target.value);
+    this.props.searchTermChange(event.target.value);
   }
 
   submitHandler(event) {
-    console.log('submited');
+    this.props.searchTermSubmitted(this.props.searchTerm);
     event.preventDefault();
   }
 
@@ -23,7 +25,7 @@ class SearchBox extends Component {
             className="search-box-input"
             type="text"
             placeholder="Nunca dejes de buscar"
-            value={this.props.searchText}
+            value={this.props.searchTerm}
             onChange={this.searchChangeHandler}
           />
           <button type="submit" />
@@ -33,4 +35,8 @@ class SearchBox extends Component {
   }
 }
 
-export default SearchBox;
+const mapStateToProps = ({ search }, ownProps) => {
+  const { searchTerm, submited, error, loading } = search;
+  return { searchTerm };
+};
+export default connect(mapStateToProps, actions)(SearchBox);

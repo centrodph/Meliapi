@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import registerServiceWorker from './registerServiceWorker';
+import ReduxThunk from 'redux-thunk';
 import ReactDOM from 'react-dom';
 import { Switch } from 'react-router';
 import { Route, BrowserRouter } from 'react-router-dom';
@@ -12,10 +12,11 @@ import Footer from './components/Footer';
 import Landing from './components/Landing';
 import ProductDetail from './components/ProductDetail';
 import SearchResult from './components/SearchResult';
-const store = createStore(applyMiddleware());
+import appReducers from './reducers';
+const createAppStore = applyMiddleware(ReduxThunk)(createStore);
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={createAppStore(appReducers)}>
     <BrowserRouter>
       <div>
         <Header />
@@ -30,4 +31,3 @@ ReactDOM.render(
   </Provider>,
   document.querySelector('#root')
 );
-registerServiceWorker();

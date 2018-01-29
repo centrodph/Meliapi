@@ -21,8 +21,10 @@
   "homepage": "https://github.com/centrodph/Meliapi#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
     "express": "^4.16.2",
-    "morgan": "^1.9.0"
+    "morgan": "^1.9.0",
+    "request": "^2.83.0"
   },
   "devDependencies": {
     "concurrently": "^3.5.1",
