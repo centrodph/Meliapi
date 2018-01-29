@@ -4,7 +4,9 @@
   "description": "meliapi",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "build":
+      "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
+    "start": "npm run build && node dist/index.js",
     "client": "npm start --prefix client",
     "server": "nodemon index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\" "
@@ -27,7 +29,10 @@
     "request": "^2.83.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
     "concurrently": "^3.5.1",
-    "nodemon": "^1.12.1"
+    "nodemon": "^1.12.1",
+    "rimraf": "^2.6.2"
   }
 }

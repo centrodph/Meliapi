@@ -1,5 +1,4 @@
-var request = require('request');
-const api = 'https://api.mercadolibre.com/sites/MLA/search?q=';
+const Meli = require('../services/meli');
 /**
  * [homepageCrl description]
  * @method homepageCrl
@@ -8,9 +7,5 @@ const api = 'https://api.mercadolibre.com/sites/MLA/search?q=';
  * @return {[type]}        [description]
  */
 module.exports.homepageCtrl = (req, res) => {
-  request.get({ url: api + 'televisor' }, function(error, response, body) {
-    if (!error && response.statusCode == 200) {
-      res.send(body);
-    }
-  });
+  Meli.doSearchItems('iphone');
 };
