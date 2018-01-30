@@ -5,7 +5,6 @@ import ReduxThunk from 'redux-thunk';
 import ReactDOM from 'react-dom';
 import { Switch } from 'react-router';
 import { Route, BrowserRouter } from 'react-router-dom';
-import { routerMiddleware, push } from 'react-router-redux';
 
 import './assets/base.css';
 import Header from './components/Header';

@@ -25,15 +25,26 @@ class SearchResult extends Component {
       );
     }
   }
+
+  renderList() {
+    return this.props.items.map(item => <div key={item.id}>{item.title}</div>);
+  }
+
   render() {
     if (this.loading === true) return this.renderLoading();
 
-    return <div className="product-detail">{this.renderLoading()}</div>;
+    return (
+      <div className="product-detail">
+        {this.renderLoading()}
+        {this.renderList()}
+      </div>
+    );
   }
 }
 
-const mapStateToProps = ({ search }, ownProps) => {
-  const { searchTerm, submited, error, loading } = search;
-  return { searchTerm, loading };
+const mapStateToProps = ({ search, productList }, ownProps) => {
+  const { searchTerm, error, loading } = search;
+  const { items } = productList;
+  return { searchTerm, loading, items };
 };
 export default connect(mapStateToProps, actions)(SearchResult);
