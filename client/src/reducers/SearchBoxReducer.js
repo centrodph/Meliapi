@@ -18,8 +18,9 @@ export default (state = INITIAL_STATE, action) => {
     case SEARCH_BOX_TERM_CHANGED:
       return { ...state, searchTerm: action.payload };
     case SEARCH_BOX_SUCCESS:
-      console.info(action.payload);
       return { ...state, ...INITIAL_STATE };
+    case SEARCH_BOX_LOADING:
+      return { ...state, loading: true };
     default:
       return state;
   }

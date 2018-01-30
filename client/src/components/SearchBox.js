@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import { withRouter } from 'react-router-dom';
 
 class SearchBox extends Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class SearchBox extends Component {
 
   submitHandler(event) {
     this.props.searchTermSubmitted(this.props.searchTerm);
+    this.props.history.push('/items?search=' + this.props.searchTerm);
     event.preventDefault();
   }
 
@@ -39,4 +41,4 @@ const mapStateToProps = ({ search }, ownProps) => {
   const { searchTerm, submited, error, loading } = search;
   return { searchTerm };
 };
-export default connect(mapStateToProps, actions)(SearchBox);
+export default connect(mapStateToProps, actions)(withRouter(SearchBox));

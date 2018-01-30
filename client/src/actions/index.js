@@ -17,19 +17,19 @@ export const searchTermChange = text => {
 
 export const searchTermSubmitted = text => {
   return async dispatch => {
-    try {
-      const result = await axios.get(APIURL);
-      return {
-        type: SEARCH_BOX_ERROR
-      };
-    } catch (error) {
-      return {
-        type: SEARCH_BOX_ERROR
-      };
-    }
-
-    return {
+    dispatch({
       type: SEARCH_BOX_LOADING
-    };
+    });
+    try {
+      const result = await axios.get(APIURL + 'search/' + text);
+      dispatch({
+        type: SEARCH_BOX_SUCCESS,
+        payload: result.data.results
+      });
+    } catch (error) {
+      dispatch({
+        type: SEARCH_BOX_ERROR
+      });
+    }
   };
 };

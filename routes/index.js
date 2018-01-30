@@ -1,11 +1,7 @@
-const static = require('../controllers/static');
+const static = require('../controllers/api');
 
 module.exports = app => {
-  /**
-   * @api {get} / Home Page
-   * @apiGroup STATIC PAGES
-   *
-   * @apiSuccess {Json} result.
-   */
-  app.get('/', static.homepageCtrl);
+  app.get('/search/:term', static.apiSearchCtrl);
+
+  app.get('/', static.apiCtrl);
 };
