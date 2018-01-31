@@ -6,6 +6,8 @@ $gray: #999999;
 $light-gray: #eeeeee;
 $light-gray-hover: #dadada;
 $placeholderColor: $gray;
+$simple-space: 16px;
+$double-space: 32px;
 
 body {
   margin: 0;
@@ -49,7 +51,9 @@ body {
   }
 }
 
-//SEARCH
+/**
+  SEARCH
+**/
 .search-box-component {
   width: 90%;
   float: left;
@@ -92,3 +96,7 @@ body {
   @extend %notification;
   color: #fa8888;
 }
+
+/***
+  RESULT PAGE
+***/

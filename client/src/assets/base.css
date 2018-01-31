@@ -39,6 +39,9 @@ body {
   .logo img {
     max-height: 34px; }
 
+/**
+  SEARCH
+**/
 .search-box-component {
   width: 90%;
   float: left; }
@@ -77,3 +80,7 @@ body {
 
 .error {
   color: #fa8888; }
+
+/***
+  RESULT PAGE
+***/

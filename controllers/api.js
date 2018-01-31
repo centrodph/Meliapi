@@ -9,6 +9,7 @@ module.exports.apiSearchCtrl = (req, res) => {
   if (!term) res.send({ error: 'term to search is required' });
   Meli.doSearchItems(term)
     .then(result => {
+      Meli.parseResultSearch(result);
       res.send(result);
     })
     .catch(error => {

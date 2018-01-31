@@ -12,6 +12,45 @@ function Meliintegration() {
   return MeliintegrationInstance;
 }
 
+Meliintegration.prototype.parseResultSearchCategories = function(filters) {
+  let categoryFilter = filters.filter(item => item.id === 'category');
+
+  if (!categoryFilter || !categoryFilter[0]) return [];
+  const categoryPath = categoryFilter.values.map(categoryValue => {
+    return categoryValue.path_from_root.map(path => path.name);
+  });
+
+  return categoryPath;
+};
+
+Meliintegration.prototype.parseResultSearchItems = function(items) {
+  return {
+    id: 'String',
+    title: 'String',
+    price: {
+      currency: 'String',
+      amount: 'Number',
+      decimals: 'Number'
+    },
+    picture: String,
+    condition: String,
+    free_shipping: Boolean
+  };
+};
+
+Meliintegration.prototype.parseResultSearch = function(result) {
+  result = JSON.parse(result);
+  const categories = this.parseResultSearchCategories(result.filters);
+  return {
+    author: {
+      name: 'Gerardo',
+      lastname: 'Perrucci'
+    },
+    categories: categories,
+    items: []
+  };
+};
+
 /**
  * Do search items
  * @method
