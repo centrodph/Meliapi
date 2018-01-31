@@ -1,3 +1,8 @@
+.loading, .error {
+  padding: 10px;
+  font-size: 25px;
+  text-align: center; }
+
 body {
   margin: 0;
   padding: 0;
@@ -50,6 +55,7 @@ body {
     font-size: 18px;
     -webkit-border-radius: 5px 0px 0px 5px;
     -moz-border-radius: 5px 0px 0px 5px;
+    -ms-border-radius: 5px 0px 0px 5px;
     border-radius: 5px 0px 0px 5px; }
   .search-box-component button {
     width: 34px;
@@ -64,6 +70,10 @@ body {
     cursor: pointer;
     -webkit-border-radius: 0px 5px 5px 0px;
     -moz-border-radius: 0px 5px 5px 0px;
+    -ms-border-radius: 0px 5px 5px 0px;
     border-radius: 0px 5px 5px 0px; }
     .search-box-component button:hover {
       background-color: #dadada; }
+
+.error {
+  color: #fa8888; }

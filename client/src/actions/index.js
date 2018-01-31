@@ -8,14 +8,7 @@ import {
   SEARCH_BOX_ERROR
 } from '../actions/types';
 
-export const searchTermChange = text => {
-  return {
-    type: SEARCH_BOX_TERM_CHANGED,
-    payload: text
-  };
-};
-
-export const searchTermSubmitted = text => {
+export const searchProductlist = text => {
   return async dispatch => {
     dispatch({
       type: SEARCH_BOX_LOADING
@@ -28,8 +21,22 @@ export const searchTermSubmitted = text => {
       });
     } catch (error) {
       dispatch({
-        type: SEARCH_BOX_ERROR
+        type: SEARCH_BOX_ERROR,
+        payload: 'Error trying to access the product list'
       });
     }
+  };
+};
+
+export const searchTermChange = text => {
+  return {
+    type: SEARCH_BOX_TERM_CHANGED,
+    payload: text
+  };
+};
+
+export const searchTermSubmitted = text => {
+  return {
+    type: SEARCH_BOX_LOADING
   };
 };
