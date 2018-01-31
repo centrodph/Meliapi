@@ -16,11 +16,11 @@ Meliintegration.prototype.parseResultSearchCategories = function(filters) {
 	let categoryFilter = filters.filter(item => item.id === 'category');
 
 	if (!categoryFilter || !categoryFilter[0]) return [];
-	const categoryPath = categoryFilter.values.map(categoryValue => {
+	return categoryFilter.values.map(categoryValue => {
 		return categoryValue.path_from_root.map(path => path.name);
 	});
 
-	return categoryPath;
+	return [];
 };
 
 Meliintegration.prototype.parseResultSearchItems = function(items) {
@@ -43,8 +43,18 @@ Meliintegration.prototype.parseResultSearchItems = function(items) {
 
 Meliintegration.prototype.parseResultSearch = function(result) {
 	result = JSON.parse(result);
+	console.log('step1');
 	const categories = this.parseResultSearchCategories(result.filters);
-	const items = this.parseResultSearchCategories(result.results);
+	console.log('step2');
+	const items = this.parseResultSearchItems(result.results);
+	console.log({
+		author: {
+			name: 'Gerardo',
+			lastname: 'Perrucci'
+		},
+		categories,
+		items
+	});
 	return {
 		author: {
 			name: 'Gerardo',
@@ -67,13 +77,15 @@ Meliintegration.prototype.doSearchItems = function(searchTerm = '', options = { 
 
 	return new Promise((resolve, reject) => {
 		try {
-			request.get({ url: callUrl }, (error, response, body) => {
+			request.get({ url: callUrl, proxy: 'http://proxy.ar.bsch:8080' }, (error, response, body) => {
 				if (!error && response.statusCode == 200) {
 					resolve(body);
 				}
+				console.log(error);
 				reject({ error: error });
 			});
 		} catch (error) {
+			console.log(error);
 			reject({ error: error });
 		}
 	});
