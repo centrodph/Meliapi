@@ -24,23 +24,29 @@ Meliintegration.prototype.parseResultSearchCategories = function(filters) {
 };
 
 Meliintegration.prototype.parseResultSearchItems = function(items) {
-  return {
-    id: 'String',
-    title: 'String',
-    price: {
-      currency: 'String',
-      amount: 'Number',
-      decimals: 'Number'
-    },
-    picture: String,
-    condition: String,
-    free_shipping: Boolean
-  };
+
+  const items= items.map(item=>{
+    const {id, title, thumbnail, condition, price, currency_id ,shipping: {free_shipping}} =item;
+    {
+      id,
+      title,
+      price: {
+        currency: currency_id,
+        amount: price,
+        decimals: 0
+      },
+      picture: thumbnail,
+      condition,
+      free_shipping
+    }
+  })
+  console.log(items);
 };
 
 Meliintegration.prototype.parseResultSearch = function(result) {
   result = JSON.parse(result);
   const categories = this.parseResultSearchCategories(result.filters);
+  const item = this.parseResultSearchCategories(result.results);
   return {
     author: {
       name: 'Gerardo',
