@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
 .loading, .error {
   padding: 10px;
   font-size: 25px;
@@ -6,7 +7,8 @@
 body {
   margin: 0;
   padding: 0;
-  background: #eeeeee; }
+  background: #eeeeee;
+  font-family: 'Open Sans', sans-serif; }
 
 .clearfix {
   clear: both;
@@ -29,7 +31,7 @@ body {
   background: #ffe600;
   padding: 7px 0; }
 
-.header-container {
+.header-container, .page-container {
   max-width: 860px;
   margin: 0 auto; }
 
@@ -84,3 +86,13 @@ body {
 /***
   RESULT PAGE
 ***/
+.breadcrum-component {
+  padding: 16px 0;
+  color: #999999; }
+  .breadcrum-component .breadcrum-category {
+    font-size: 13px;
+    padding-right: 10px; }
+    .breadcrum-component .breadcrum-category .breadcrum-category-separator {
+      padding-left: 4px; }
+    .breadcrum-component .breadcrum-category.last {
+      font-weight: bold; }

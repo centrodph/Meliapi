@@ -7,6 +7,8 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
+  categories: [],
+  author: {},
   items: [],
   error: ''
 };
@@ -14,7 +16,7 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SEARCH_BOX_SUCCESS:
-      return { ...state, items: action.payload };
+      return { ...state, ...action.payload };
     case SEARCH_BOX_ERROR:
       return { ...state, error: action.payload };
     default:
