@@ -96,3 +96,7 @@ body {
       padding-left: 4px; }
     .breadcrum-component .breadcrum-category.last {
       font-weight: bold; }
+
+.product-list-item-component {
+  background: #fff;
+  padding: 16px; }
