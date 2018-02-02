@@ -1,5 +1,17 @@
-@import 'mixins.scss';
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
+	border-radius: $radius;
+}
+
+%notification {
+	padding: 10px;
+	font-size: 25px;
+	text-align: center;
+}
 
 $yellow: #ffe600;
 $dark: #333333;
@@ -10,98 +22,99 @@ $placeholderColor: $gray;
 $simple-space: 16px;
 $double-space: 32px;
 $width-container: 860px;
+$size-thumb: 180px;
 
 body {
-  margin: 0;
-  padding: 0;
-  background: $light-gray;
-  font-family: 'Open Sans', sans-serif;
+	margin: 0;
+	padding: 0;
+	background: $light-gray;
+	font-family: 'Open Sans', sans-serif;
 }
 
 .clearfix {
-  clear: both;
-  width: 100%;
-  height: 1px;
+	clear: both;
+	width: 100%;
+	height: 1px;
 }
 
 ::-webkit-input-placeholder {
-  color: $placeholderColor;
+	color: $placeholderColor;
 }
 ::-moz-placeholder {
-  color: $placeholderColor;
+	color: $placeholderColor;
 }
 :-ms-input-placeholder {
-  color: $placeholderColor;
+	color: $placeholderColor;
 }
 :-moz-placeholder {
-  color: $placeholderColor;
+	color: $placeholderColor;
 }
 
 //HEADER Component
 .header-component {
-  background: $yellow;
-  padding: 7px 0;
+	background: $yellow;
+	padding: 7px 0;
 }
 .header-container {
-  max-width: $width-container;
-  margin: 0 auto;
+	max-width: $width-container;
+	margin: 0 auto;
 }
 .page-container {
-  @extend .header-container;
+	@extend .header-container;
 }
 
 .logo {
-  width: 10%;
-  float: left;
-  img {
-    max-height: 34px;
-  }
+	width: 10%;
+	float: left;
+	img {
+		max-height: 34px;
+	}
 }
 
 /**
   SEARCH
 **/
 .search-box-component {
-  width: 90%;
-  float: left;
-  form {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    flex: 1;
-  }
-  input {
-    width: 100%;
-    height: 34px;
-    padding: 0 13px;
-    border: none;
-    font-size: 18px;
-    @include border-radius(5px 0px 0px 5px);
-  }
-  button {
-    width: 34px;
-    height: 34px;
-    padding: 0;
-    border: none;
-    background-color: $light-gray;
-    background-image: url(./images/ic_Search@2x.png);
-    background-size: 18px 18px;
-    background-repeat: no-repeat;
-    background-position: center;
-    cursor: pointer;
-    @include border-radius(0px 5px 5px 0px);
-    &:hover {
-      background-color: $light-gray-hover;
-    }
-  }
+	width: 90%;
+	float: left;
+	form {
+		display: flex;
+		justify-content: center;
+		flex-direction: row;
+		flex: 1;
+	}
+	input {
+		width: 100%;
+		height: 34px;
+		padding: 0 13px;
+		border: none;
+		font-size: 18px;
+		@include border-radius(5px 0px 0px 5px);
+	}
+	button {
+		width: 34px;
+		height: 34px;
+		padding: 0;
+		border: none;
+		background-color: $light-gray;
+		background-image: url(./images/ic_Search@2x.png);
+		background-size: 18px 18px;
+		background-repeat: no-repeat;
+		background-position: center;
+		cursor: pointer;
+		@include border-radius(0px 5px 5px 0px);
+		&:hover {
+			background-color: $light-gray-hover;
+		}
+	}
 }
 
 .loading {
-  @extend %notification;
+	@extend %notification;
 }
 .error {
-  @extend %notification;
-  color: #fa8888;
+	@extend %notification;
+	color: #fa8888;
 }
 
 /***
@@ -110,22 +123,77 @@ body {
 
 //Breadcrums
 .breadcrum-component {
-  padding: $simple-space 0;
-  color: $gray;
+	padding: $simple-space 0;
+	color: $gray;
 
-  .breadcrum-category {
-    font-size: 13px;
-    padding-right: 10px;
-    .breadcrum-category-separator {
-      padding-left: 4px;
-    }
-    &.last {
-      font-weight: bold;
-    }
-  }
+	.breadcrum-category {
+		font-size: 13px;
+		padding-right: 10px;
+		.breadcrum-category-separator {
+			padding-left: 4px;
+		}
+		&.last {
+			font-weight: bold;
+		}
+	}
+}
+
+/**
+PRODUCT LIST ITEM
+**/
+
+.product-title {
+	font-weight: normal;
+	font-size: 18px;
+}
+.product-price {
+	line-height: 30px;
+	font-size: 22px;
+}
+
+.product-thumb {
+	@include border-radius(4px);
 }
 
 .product-list-item-component {
-  background: #fff;
-  padding: $simple-space;
+	background: #fff;
+	padding: $simple-space;
+	min-height: $size-thumb;
+	position: relative;
+
+	.product-thumb {
+		position: absolute;
+		top: $simple-space;
+		left: $simple-space;
+		img {
+			height: $size-thumb;
+			width: $size-thumb;
+		}
+	}
+	.product-list-item-left {
+		position: absolute;
+		top: $simple-space;
+		left: $simple-space;
+	}
+	.product-list-item-right {
+		margin-left: $size-thumb;
+		padding-left: $simple-space;
+		header {
+			float: left;
+			width: (100*6)/8;
+		}
+		address {
+			float: left;
+			width: (100*2)/8;
+		}
+	}
+}
+
+.icon-freeshipping-active {
+	display: inline-block;
+	width: 20px;
+	height: 30px;
+	background: url(./images/ic_shipping@2x.png) no-repeat;
+	background-position: center;
+	background-size: 18px;
 }

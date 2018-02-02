@@ -97,17 +97,6 @@ body {
     .breadcrum-component .breadcrum-category.last {
       font-weight: bold; }
 
-/**
-PRODUCT LIST ITEM
-**/
-.product-title {
-  font-weight: normal;
-  font-size: 18px; }
-
-.product-price {
-  line-height: 30px;
-  font-size: 22px; }
-
 .product-thumb {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -116,34 +105,13 @@ PRODUCT LIST ITEM
 
 .product-list-item-component {
   background: #fff;
-  padding: 16px;
-  min-height: 180px;
-  position: relative; }
-  .product-list-item-component .product-thumb {
-    position: absolute;
-    top: 16px;
-    left: 16px; }
-    .product-list-item-component .product-thumb img {
-      height: 180px;
-      width: 180px; }
-  .product-list-item-component .product-list-item-left {
-    position: absolute;
-    top: 16px;
-    left: 16px; }
-  .product-list-item-component .product-list-item-right {
-    margin-left: 180px;
-    padding-left: 16px; }
-    .product-list-item-component .product-list-item-right header {
-      float: left;
-      width: 75; }
-    .product-list-item-component .product-list-item-right address {
-      float: left;
-      width: 25; }
+  padding: 16px; }
+  .product-list-item-component .product-thumb img {
+    height: 180px;
+    width: 180px; }
 
 .icon-freeshipping-active {
-  display: inline-block;
   width: 20px;
-  height: 30px;
   background: url(./images/ic_shipping@2x.png) no-repeat;
   background-position: center;
   background-size: 18px; }

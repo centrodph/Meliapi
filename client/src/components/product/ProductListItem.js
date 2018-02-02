@@ -3,28 +3,34 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import { withRouter } from 'react-router-dom';
 
+import Clear from '../common/Clear';
 import ProductPrice from './ProductPrice';
+import ProductThumb from './ProductThumb';
+import ProductTitle from './ProductTitle';
 class ProductListItem extends Component {
-  render() {
-    const { title, picture, free_shipping, condition, price } = this.props;
+	onClickHandler(productId) {
+		this.props.history.push('/items/' + productId);
+	}
 
-    return (
-      <div className="product-list-item-component">
-        <div className="product-title">{title}</div>
+	render() {
+		const { title, picture, free_shipping, condition, price, city_name, id } = this.props;
 
-        <ProductPrice {...price} free_shipping={free_shipping} />
-
-        <div className="product-thumb">
-          <img src={picture} />
-        </div>
-      </div>
-    );
-  }
+		return (
+			<article className="product-list-item-component">
+				<div className="product-list-item-left">
+					<ProductThumb picture={picture} alt={title} onClick={this.onClickHandler.bind(this, id)} />
+				</div>
+				<div className="product-list-item-right">
+					<header>
+						<ProductPrice {...price} free_shipping={free_shipping} />
+						<ProductTitle title={title} onClick={this.onClickHandler.bind(this, id)} />
+					</header>
+					<address>{city_name}</address>
+					<Clear />
+				</div>
+			</article>
+		);
+	}
 }
 
-const mapStateToProps = ({ search, productList }, ownProps) => {
-  const { searchTerm, loading } = search;
-  const { items, error, categories, author } = productList;
-  return { searchTerm, loading, items, error, categories };
-};
-export default connect(mapStateToProps, actions)(ProductListItem);
+export default withRouter(connect(null, actions)(ProductListItem));
