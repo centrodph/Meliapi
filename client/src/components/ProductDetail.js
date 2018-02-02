@@ -6,7 +6,10 @@ import queryString from 'query-string';
 
 import Clear from './common/Clear';
 import ProductDetailDescription from './product/ProductDetailDescription';
-
+import ProductStatus from './product/ProductStatus';
+import ProductTitle from './product/ProductTitle';
+import ProductThumb from './product/ProductThumb';
+import ProductComprar from './product/ProductComprar';
 /**
  * Show product detail
  * @extends Component
@@ -41,11 +44,17 @@ class ProductDetail extends Component {
 
 	renderDetail() {
 		if (this.props.productDetail === null) return null;
-		const { description } = this.props.productDetail.item;
+		const { description, condition, sold_quantity, title, picture } = this.props.productDetail.item;
 		return (
 			<div className="product-detail-content">
-				<div className="product-detail-left">left</div>
-				<div className="product-detail-right">right</div>
+				<div className="product-detail-left">
+					<ProductThumb picture={picture} alt={title} />
+				</div>
+				<div className="product-detail-right">
+					<ProductStatus condition={condition} sold_quantity={sold_quantity} />
+					<ProductTitle title={title} />
+					<ProductComprar {...this.props.productDetail.item} />
+				</div>
 				<Clear />
 				<ProductDetailDescription description={description} />
 			</div>
