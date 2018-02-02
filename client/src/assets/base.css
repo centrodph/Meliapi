@@ -147,3 +147,13 @@ PRODUCT LIST ITEM
   background: url(./images/ic_shipping@2x.png) no-repeat;
   background-position: center;
   background-size: 18px; }
+
+.product-detail .product-detail-left,
+.product-detail .product-detail-right {
+  float: left; }
+
+.product-detail .product-detail-left {
+  width: 50%; }
+
+.product-detail .product-detail-right {
+  width: 50%; }

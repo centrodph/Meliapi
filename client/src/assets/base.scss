@@ -197,3 +197,18 @@ PRODUCT LIST ITEM
 	background-position: center;
 	background-size: 18px;
 }
+
+// PRODUCT DETAIL
+
+.product-detail {
+	.product-detail-left,
+	.product-detail-right {
+		float: left;
+	}
+	.product-detail-left {
+		width: 50%;
+	}
+	.product-detail-right {
+		width: 50%;
+	}
+}
