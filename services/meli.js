@@ -57,8 +57,8 @@ Meliintegration.prototype.doGetProductDetail = function(productId) {
 		try {
 			request.get(
 				{
-					url: callUrl
-					// , proxy: 'http://proxy.ar.bsch:8080'
+					url: callUrl,
+					proxy: 'http://proxy.ar.bsch:8080'
 				},
 				(error, response, body) => {
 					if (!error && response.statusCode == 200) {
@@ -80,8 +80,8 @@ Meliintegration.prototype.doGetProductDescription = function(productId) {
 		try {
 			request.get(
 				{
-					url: callUrl
-					// , proxy: 'http://proxy.ar.bsch:8080'
+					url: callUrl,
+					proxy: 'http://proxy.ar.bsch:8080'
 				},
 				(error, response, body) => {
 					if (!error && response.statusCode == 200) {
