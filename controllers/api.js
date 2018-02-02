@@ -16,3 +16,26 @@ module.exports.apiSearchCtrl = (req, res) => {
       res.send(error);
     });
 };
+
+module.exports.apiProductCtrl = (req, res) => {
+  const productId = req.params.id;
+  if (!productId) res.send({ error: 'Product Id is required' });
+  Meli.doGetProductDetail(productId)
+    .then(resultDetail => {
+      const parseDetail = Meli.parseProductDetail(resultDetail);
+
+      Meli.doGetProductDescription(productId)
+        .then(resultDescription => {
+          parseDetail.description = Meli.parseProductDescription(
+            resultDescription
+          );
+          res.send(parseDetail);
+        })
+        .catch(error => {
+          res.send(error);
+        });
+    })
+    .catch(error => {
+      res.send(error);
+    });
+};
