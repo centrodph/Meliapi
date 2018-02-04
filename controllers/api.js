@@ -1,5 +1,5 @@
 const Meli = require('../services/meli');
-
+const path = require('path');
 /**
  * Dummy controller
  * @method apiCtrl
@@ -8,7 +8,7 @@ const Meli = require('../services/meli');
  * @return {[type]}     [description]
  */
 module.exports.apiCtrl = (req, res) => {
-  res.sendFile(path.join(__dirname + '/index.html'));
+  res.sendFile(path.join(__dirname + '/../client/build/index.html'));
 };
 
 /**
