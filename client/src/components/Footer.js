@@ -5,10 +5,14 @@ class Footer extends Component {
   render() {
     return (
       <div className="footerComponent">
-        TEST
-        <Link to="./">Home</Link> |
-        <Link to="./items?search=televisor&size=3">SearchResult</Link> |
-        <Link to="./items/992">ProductDetail</Link>
+        <strong>github: </strong>
+        <a href="https://github.com/centrodph" target="_blank">
+          Gerardo Perrucci
+        </a>
+        | <strong>email: </strong>
+        <a href="mailto:centrodph@gmail.com" target="_blank">
+          centrodph@gmail.com
+        </a>
       </div>
     );
   }

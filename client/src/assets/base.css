@@ -1,14 +1,32 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
-.loading, .error {
-  padding: 10px;
-  font-size: 25px;
-  text-align: center; }
-
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+/**
+	COMMON
+**/
 body {
   margin: 0;
   padding: 0;
   background: #eeeeee;
   font-family: 'Open Sans', sans-serif; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #333333;
+  font-weight: bold; }
+
+strong,
+b {
+  font-weight: bold; }
+
+.loading, .error {
+  padding: 10px;
+  font-size: 18px;
+  text-align: center;
+  color: #999999; }
 
 .clearfix {
   clear: both;
@@ -27,11 +45,27 @@ body {
 :-moz-placeholder {
   color: #999999; }
 
+button {
+  border: none;
+  background: #3486fa;
+  cursor: pointer;
+  color: #fff;
+  text-align: center;
+  font-size: 18px;
+  width: 100%;
+  padding: 8px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px; }
+  button:hover {
+    background-color: #055edc; }
+
 .header-component {
   background: #ffe600;
   padding: 7px 0; }
 
-.header-container, .page-container {
+.header-container, .page-container, .product-detail {
   max-width: 860px;
   margin: 0 auto; }
 
@@ -148,12 +182,59 @@ PRODUCT LIST ITEM
   background-position: center;
   background-size: 18px; }
 
+.product-detail .product-detail-content {
+  background: #fff;
+  padding: 32px; }
+
 .product-detail .product-detail-left,
 .product-detail .product-detail-right {
   float: left; }
 
 .product-detail .product-detail-left {
-  width: 50%; }
+  width: 80%; }
 
 .product-detail .product-detail-right {
-  width: 50%; }
+  width: 20%; }
+
+.product-detail-right .product-status {
+  font-size: 14px;
+  padding-bottom: 16px; }
+
+.product-detail-right .product-title {
+  font-size: 24px;
+  margin: 0;
+  padding-bottom: 32px; }
+
+.product-detail-right .product-price {
+  padding-bottom: 32px;
+  line-height: 46px;
+  font-size: 46px; }
+
+.product-detail-left .product-thumb {
+  max-width: 680px;
+  padding: 16px; }
+
+.product-detail-left img {
+  width: 100%; }
+
+.product-detail-description {
+  padding-top: 70px; }
+  .product-detail-description h5 {
+    font-size: 28px; }
+  .product-detail-description article {
+    padding: 32px 0;
+    font-size: 16px;
+    line-height: 150%;
+    color: #999999;
+    word-break: break-word; }
+
+.footerComponent {
+  padding: 70px 16px 16px 16px;
+  text-align: center;
+  font-size: 12px;
+  color: #999999; }
+  .footerComponent a {
+    color: #999999;
+    text-decoration: none; }
+    .footerComponent a:hover {
+      color: #055edc; }
