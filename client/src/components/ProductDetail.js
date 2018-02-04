@@ -11,6 +11,7 @@ import ProductTitle from './product/ProductTitle';
 import ProductThumb from './product/ProductThumb';
 import ProductComprar from './product/ProductComprar';
 import ProductPrice from './product/ProductPrice';
+import Breadcrums from './product/Breadcrums';
 /**
  * Show product detail
  * @extends Component
@@ -46,6 +47,7 @@ class ProductDetail extends Component {
   renderDetail() {
     if (this.props.productDetail === null) return null;
     const {
+      categories,
       description,
       condition,
       sold_quantity,
@@ -56,6 +58,7 @@ class ProductDetail extends Component {
     } = this.props.productDetail.item;
     return (
       <div className="page-container">
+        <Breadcrums categories={categories} />
         <div className="product-detail-content">
           <div className="product-detail-left">
             <ProductThumb picture={picture} alt={title} />

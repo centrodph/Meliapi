@@ -28,6 +28,39 @@ function Meliintegration() {
  * @param  {Object} [options={limit:LIMIT }] [description]
  * @return {Promise}
  */
+Meliintegration.prototype.doGetCategory = function(categoryId) {
+  const url = URL + 'categories/' + categoryId;
+  const options = { url };
+
+  //Promise
+  return new Promise((resolve, reject) => {
+    try {
+      request.get(options, (error, response, body) => {
+        console.log('BODY: ' + body);
+        console.log('ERROR: ' + error);
+        if (!error && response.statusCode == 200) {
+          resolve(body);
+        }
+        reject({ error: error });
+      });
+    } catch (error) {
+      reject({ error: error });
+    }
+  });
+};
+
+Meliintegration.prototype.parseBreadcrum = function(categoryResult) {
+  categoryResult = JSON.parse(categoryResult);
+  return categoryResult.path_from_root.map(path => path.name);
+};
+
+/**
+ * Do search items
+ * @method
+ * @param  {String} [searchTerm=''] [description]
+ * @param  {Object} [options={limit:LIMIT }] [description]
+ * @return {Promise}
+ */
 Meliintegration.prototype.doGetProductDetail = function(productId) {
   const url = URL + 'items/' + productId;
   const options = { url };
@@ -192,7 +225,6 @@ Meliintegration.prototype.parseResultSearch = function(result) {
  */
 Meliintegration.prototype.parseProductDetail = function(detail) {
   detail = JSON.parse(detail);
-
   const {
     id,
     title,
@@ -201,7 +233,8 @@ Meliintegration.prototype.parseProductDetail = function(detail) {
     thumbnail,
     condition,
     shipping: { free_shipping },
-    sold_quantity
+    sold_quantity,
+    category_id
   } = detail;
 
   return {
@@ -218,6 +251,7 @@ Meliintegration.prototype.parseProductDetail = function(detail) {
       condition,
       free_shipping,
       sold_quantity,
+      category_id,
       description: ''
     }
   };

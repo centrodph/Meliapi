@@ -57,11 +57,36 @@ module.exports.apiProductCtrl = (req, res) => {
           parseDetail.item.description = Meli.parseProductDescription(
             resultDescription
           );
-          res.send(parseDetail);
+          //res.send(parseDetail);
+          Meli.doGetCategory(parseDetail.item.category_id)
+            .then(resultCategories => {
+              const parseCategories = Meli.parseBreadcrum(resultCategories);
+              parseDetail.item.categories = parseCategories;
+              res.send(parseDetail);
+            })
+            .catch(error => {
+              res.send(error);
+            });
         })
         .catch(error => {
           res.send(error);
         });
+    })
+    .catch(error => {
+      res.send(error);
+    });
+};
+
+module.exports.apiCategoryCtrl = (req, res) => {
+  const categoryId = req.params.id;
+  if (!categoryId) {
+    res.status(422);
+    res.send({ error: 'Category Id is required' });
+  }
+  Meli.doGetCategory(categoryId)
+    .then(resultDetail => {
+      const parseDetail = Meli.parseBreadcrum(resultDetail);
+      res.send(parseDetail);
     })
     .catch(error => {
       res.send(error);
