@@ -8,6 +8,9 @@ import Breadcrums from './product/Breadcrums';
 import ProductListItem from './product/ProductListItem';
 
 class SearchResult extends Component {
+  state = {
+    searchTerm: ''
+  };
   /**
    * Search for product list when the user
    * come in directly with the url
@@ -15,6 +18,32 @@ class SearchResult extends Component {
    * @return {[type]}           [description]
    */
   componentWillMount() {
+    this.loadData();
+  }
+
+  /**
+   * Check if search term change
+   * @method shouldComponentUpdate
+   * @param  {[type]}              nextProps [description]
+   * @param  {[type]}              nextState [description]
+   * @return {[type]}                        [description]
+   */
+  shouldComponentUpdate(nextProps, nextState) {
+    const { loading, searchTerm } = nextProps;
+    //needs to make a new request
+    if (loading && searchTerm !== nextState.searchTerm) {
+      this.loadData();
+      return false;
+    }
+    return true;
+  }
+
+  /**
+   * Load data from URL or searchTerm state
+   * @method loadData
+   * @return {[type]} [description]
+   */
+  loadData() {
     let searchTerm = this.props.searchTerm;
     if (searchTerm === '') {
       searchTerm = queryString.parse(this.props.location.search).search;
@@ -22,6 +51,9 @@ class SearchResult extends Component {
     }
     if (!searchTerm) return this.props.history.push('/');
 
+    this.setState({
+      searchTerm: searchTerm
+    });
     this.props.searchProductlist(searchTerm);
   }
 

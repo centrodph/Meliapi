@@ -37,7 +37,7 @@ export const searchProductlist = text => {
       type: SEARCH_BOX_LOADING
     });
     try {
-      const result = await axios.get(APIURL + 'search/' + text);
+      const result = await axios.get(APIURL + 'api/items?q=' + text);
       dispatch({
         type: SEARCH_BOX_SUCCESS,
         payload: result.data

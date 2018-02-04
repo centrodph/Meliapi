@@ -1,12 +1,18 @@
 const request = require('request');
+
 const author = {
   name: 'Gerardo',
   lastname: 'Perrucci'
 };
 const URL = 'https://api.mercadolibre.com/';
 const LIMIT = 4;
-let MeliintegrationInstance = null;
 
+/**
+ * Constructor
+ * @method      Meliintegration
+ * @constructor
+ */
+let MeliintegrationInstance = null; //instance
 function Meliintegration() {
   if (MeliintegrationInstance === null) {
     this.random = Math.floor(Math.random() * (9999 - 1111)) + 1111;
@@ -15,43 +21,6 @@ function Meliintegration() {
   return MeliintegrationInstance;
 }
 
-Meliintegration.prototype.parseProductDetail = function(detail) {
-  detail = JSON.parse(detail);
-
-  const {
-    id,
-    title,
-    currency_id,
-    price,
-    thumbnail,
-    condition,
-    shipping: { free_shipping },
-    sold_quantity
-  } = detail;
-
-  return {
-    author,
-    item: {
-      id,
-      title,
-      price: {
-        currency: currency_id,
-        amount: price,
-        decimals: 0
-      },
-      picture: thumbnail,
-      condition,
-      free_shipping,
-      sold_quantity,
-      description: ''
-    }
-  };
-};
-
-Meliintegration.prototype.parseProductDescription = function(description) {
-  description = JSON.parse(description);
-  return description.plain_text;
-};
 /**
  * Do search items
  * @method
@@ -60,43 +29,73 @@ Meliintegration.prototype.parseProductDescription = function(description) {
  * @return {Promise}
  */
 Meliintegration.prototype.doGetProductDetail = function(productId) {
-  const callUrl = URL + 'items/' + productId;
+  const url = URL + 'items/' + productId;
+  const options = { url };
 
+  //Promise
   return new Promise((resolve, reject) => {
     try {
-      request.get(
-        {
-          url: callUrl
-        },
-        (error, response, body) => {
-          if (!error && response.statusCode == 200) {
-            resolve(body);
-          }
-          reject({ error: error });
+      request.get(options, (error, response, body) => {
+        if (!error && response.statusCode == 200) {
+          resolve(body);
         }
-      );
+        reject({ error: error });
+      });
     } catch (error) {
       reject({ error: error });
     }
   });
 };
 
+/**
+ * API request to get description
+ * @method
+ * @param  {[type]} productId [description]
+ * @return {[type]}           [description]
+ */
 Meliintegration.prototype.doGetProductDescription = function(productId) {
-  const callUrl = URL + 'items/' + productId + '/description';
+  const url = URL + 'items/' + productId + '/description';
+  const options = { url };
 
+  //Promise
   return new Promise((resolve, reject) => {
     try {
-      request.get(
-        {
-          url: callUrl
-        },
-        (error, response, body) => {
-          if (!error && response.statusCode == 200) {
-            resolve(body);
-          }
-          reject({ error: error });
+      request.get(options, (error, response, body) => {
+        if (!error && response.statusCode == 200) {
+          resolve(body);
         }
-      );
+        reject({ error: error });
+      });
+    } catch (error) {
+      reject({ error: error });
+    }
+  });
+};
+
+/**
+ * Do search items
+ * @method
+ * @param  {String} [searchTerm=''] [description]
+ * @param  {Object} [options={limit:LIMIT }] [description]
+ * @return {Promise}
+ */
+Meliintegration.prototype.doSearchItems = function(
+  searchTerm = '',
+  options = { limit: LIMIT }
+) {
+  const url =
+    URL + 'sites/MLA/search?q=' + searchTerm + '&' + this.parseOptions(options);
+  const options = { url };
+
+  //Promise
+  return new Promise((resolve, reject) => {
+    try {
+      request.get(options, (error, response, body) => {
+        if (!error && response.statusCode == 200) {
+          resolve(body);
+        }
+        reject({ error: error });
+      });
     } catch (error) {
       reject({ error: error });
     }
@@ -121,6 +120,17 @@ Meliintegration.prototype.parseResultSearchCategories = function(filters) {
   });
 
   return categoryList;
+};
+
+/**
+ * Parse description
+ * @method
+ * @param  {[type]} description [description]
+ * @return {[type]}             [description]
+ */
+Meliintegration.prototype.parseProductDescription = function(description) {
+  description = JSON.parse(description);
+  return description.plain_text;
 };
 
 /**
@@ -175,40 +185,50 @@ Meliintegration.prototype.parseResultSearch = function(result) {
 };
 
 /**
- * Do search items
+ * Parse details
  * @method
- * @param  {String} [searchTerm=''] [description]
- * @param  {Object} [options={limit:LIMIT }] [description]
- * @return {Promise}
+ * @param  {[type]} detail [description]
+ * @return {[type]}        [description]
  */
-Meliintegration.prototype.doSearchItems = function(
-  searchTerm = '',
-  options = { limit: LIMIT }
-) {
-  const callUrl =
-    URL + 'sites/MLA/search?q=' + searchTerm + '&' + this.parseOptions(options);
+Meliintegration.prototype.parseProductDetail = function(detail) {
+  detail = JSON.parse(detail);
 
-  return new Promise((resolve, reject) => {
-    try {
-      request.get(
-        {
-          url: callUrl
-        },
-        (error, response, body) => {
-          if (!error && response.statusCode == 200) {
-            resolve(body);
-          }
-          console.log(error);
-          reject({ error: error });
-        }
-      );
-    } catch (error) {
-      console.log(error);
-      reject({ error: error });
+  const {
+    id,
+    title,
+    currency_id,
+    price,
+    thumbnail,
+    condition,
+    shipping: { free_shipping },
+    sold_quantity
+  } = detail;
+
+  return {
+    author,
+    item: {
+      id,
+      title,
+      price: {
+        currency: currency_id,
+        amount: price,
+        decimals: 0
+      },
+      picture: thumbnail,
+      condition,
+      free_shipping,
+      sold_quantity,
+      description: ''
     }
-  });
+  };
 };
 
+/**
+ * Objet to URL
+ * @method
+ * @param  {[type]} options [description]
+ * @return {[type]}         [description]
+ */
 Meliintegration.prototype.parseOptions = function(options) {
   let str = [];
   for (let p in options)
