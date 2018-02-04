@@ -8,7 +8,7 @@ const Meli = require('../services/meli');
  * @return {[type]}     [description]
  */
 module.exports.apiCtrl = (req, res) => {
-  res.send({ status: 'ok' });
+  res.sendFile(path.join(__dirname + '/index.html'));
 };
 
 /**
