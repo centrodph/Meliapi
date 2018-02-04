@@ -81,10 +81,10 @@ Meliintegration.prototype.doGetProductDescription = function(productId) {
  */
 Meliintegration.prototype.doSearchItems = function(
   searchTerm = '',
-  options = { limit: LIMIT }
+  extra = { limit: LIMIT }
 ) {
   const url =
-    URL + 'sites/MLA/search?q=' + searchTerm + '&' + this.parseOptions(options);
+    URL + 'sites/MLA/search?q=' + searchTerm + '&' + this.parseOptions(extra);
   const options = { url };
 
   //Promise
