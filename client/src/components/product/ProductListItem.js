@@ -9,7 +9,7 @@ import ProductThumb from './ProductThumb';
 import ProductTitle from './ProductTitle';
 class ProductListItem extends Component {
   onClickHandler(productId) {
-    this.props.history.push('/items/' + productId);
+    this.props.history.push(`${process.env.PUBLIC_URL}/items/${productId}`);
   }
 
   render() {
@@ -23,7 +23,7 @@ class ProductListItem extends Component {
       id
     } = this.props;
 
-    const to = '/items/' + id;
+    const to = `${process.env.PUBLIC_URL}/items/${id}`;
 
     return (
       <article className="product-list-item-component">

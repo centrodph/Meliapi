@@ -49,7 +49,9 @@ class SearchResult extends Component {
       searchTerm = queryString.parse(this.props.location.search).search;
       this.props.searchTermChange(searchTerm || '');
     }
-    if (!searchTerm) return this.props.history.push('/');
+
+    if (!searchTerm)
+      return this.props.history.push(`${process.env.PUBLIC_URL}/`);
 
     this.setState({
       searchTerm: searchTerm

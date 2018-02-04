@@ -15,7 +15,9 @@ class SearchBox extends Component {
 
   submitHandler(event) {
     this.props.searchTermSubmitted(this.props.searchTerm);
-    this.props.history.push('/items?search=' + this.props.searchTerm);
+    this.props.history.push(
+      `${process.env.PUBLIC_URL}/items?search=${this.props.searchTerm}`
+    );
     event.preventDefault();
   }
 
