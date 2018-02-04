@@ -1,10 +1,14 @@
 # Deploy
 
-https://gpmeliapp.herokuapp.com/
+HOME HTML EXAMPLE https://gpmeliapp.herokuapp.com/
 
-SEARCH:
+SEARCH HTML EXAMPLE: https://gpmeliapp.herokuapp.com/items?search=iphone
 
-https://gpmeliapp.herokuapp.com/api/items/MLA621827059
+SEARCH API EXAMPLE: https://gpmeliapp.herokuapp.com/api/items?q=iphone
+
+PRODUCT HTML EXAMPLE: https://gpmeliapp.herokuapp.com/api/items/MLA621827059
+
+PRODUCT API EXAMPLE: https://gpmeliapp.herokuapp.com/api/items/MLA621827059
 
 # mercadolibre API
 
