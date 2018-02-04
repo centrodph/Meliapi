@@ -50,8 +50,7 @@ class SearchResult extends Component {
       this.props.searchTermChange(searchTerm || '');
     }
 
-    if (!searchTerm)
-      return this.props.history.push(`${process.env.PUBLIC_URL}/`);
+    if (!searchTerm) return this.props.history.push(`/`);
 
     this.setState({
       searchTerm: searchTerm

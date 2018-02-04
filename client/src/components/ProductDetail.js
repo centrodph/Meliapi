@@ -19,8 +19,7 @@ import Breadcrums from './product/Breadcrums';
 class ProductDetail extends Component {
   componentWillMount() {
     const productId = this.props.match.params.id;
-    if (!productId)
-      return this.props.history.push(`${process.env.PUBLIC_URL}/`);
+    if (!productId) return this.props.history.push(`/`);
     this.props.getProductDetail(productId);
   }
 
