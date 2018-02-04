@@ -22,14 +22,14 @@ ReactDOM.render(
         <Header />
         <Switch>
           <Route
-            path={`${process.env.PUBLIC_URL}/items/:id`}
+            path={`${process.env.PUBLIC_PATH}/items/:id`}
             component={ProductDetail}
           />
           <Route
-            path={`${process.env.PUBLIC_URL}/items`}
+            path={`${process.env.PUBLIC_PATH}/items`}
             component={SearchResult}
           />
-          <Route path={`${process.env.PUBLIC_URL}/`} component={Landing} />
+          <Route path={`${process.env.PUBLIC_PATH}/`} component={Landing} />
         </Switch>
         <Footer />
       </div>
