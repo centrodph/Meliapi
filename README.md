@@ -1,4 +1,12 @@
-# Meliapi
+# Deploy
+
+https://gpmeliapp.herokuapp.com/
+
+SEARCH:
+
+https://gpmeliapp.herokuapp.com/api/items/MLA621827059
+
+# mercadolibre API
 
 API DOCS: https://api.mercadolibre.com/sites/MLA/search?q=#options
 
