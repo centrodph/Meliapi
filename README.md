@@ -6,7 +6,7 @@ SEARCH HTML EXAMPLE: https://gpmeliapp.herokuapp.com/items?search=iphone
 
 SEARCH API EXAMPLE: https://gpmeliapp.herokuapp.com/api/items?q=iphone
 
-PRODUCT HTML EXAMPLE: https://gpmeliapp.herokuapp.com/api/items/MLA621827059
+PRODUCT HTML EXAMPLE: https://gpmeliapp.herokuapp.com/items/MLA621827059
 
 PRODUCT API EXAMPLE: https://gpmeliapp.herokuapp.com/api/items/MLA621827059
 
