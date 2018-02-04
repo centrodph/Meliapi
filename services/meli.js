@@ -36,8 +36,6 @@ Meliintegration.prototype.doGetCategory = function(categoryId) {
   return new Promise((resolve, reject) => {
     try {
       request.get(options, (error, response, body) => {
-        console.log('BODY: ' + body);
-        console.log('ERROR: ' + error);
         if (!error && response.statusCode == 200) {
           resolve(body);
         }
