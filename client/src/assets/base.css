@@ -61,11 +61,26 @@ button {
   button:hover {
     background-color: #055edc; }
 
+a {
+  color: #3486fa;
+  text-decoration: none; }
+  a:hover {
+    color: #7fb3fc; }
+
+.error {
+  color: #fa8888; }
+
+.landing {
+  padding: 80px 0;
+  line-height: 40px;
+  font-size: 12px;
+  color: #333333; }
+
 .header-component {
   background: #ffe600;
   padding: 7px 0; }
 
-.header-container, .page-container, .product-detail {
+.header-container, .landing, .page-container, .product-detail {
   max-width: 860px;
   margin: 0 auto; }
 
@@ -114,9 +129,6 @@ button {
     .search-box-component button:hover {
       background-color: #dadada; }
 
-.error {
-  color: #fa8888; }
-
 /***
   RESULT PAGE
 ***/
@@ -131,12 +143,16 @@ button {
     .breadcrum-component .breadcrum-category.last {
       font-weight: bold; }
 
-/**
-PRODUCT LIST ITEM
-**/
 .product-title {
   font-weight: normal;
-  font-size: 18px; }
+  font-size: 18px;
+  line-height: 150%;
+  color: #333333; }
+  .product-title a {
+    color: #333333;
+    text-decoration: none; }
+    .product-title a:hover {
+      color: #595959; }
 
 .product-price {
   line-height: 30px;
@@ -150,13 +166,16 @@ PRODUCT LIST ITEM
 
 .product-list-item-component {
   background: #fff;
-  padding: 16px;
-  min-height: 180px;
-  position: relative; }
+  position: relative;
+  padding: 0 16px; }
+  .product-list-item-component .product-list-item-content {
+    min-height: 180px;
+    border-bottom: solid 1px #eeeeee;
+    padding: 16px 0; }
   .product-list-item-component .product-thumb {
     position: absolute;
-    top: 16px;
-    left: 16px; }
+    top: 0;
+    left: 0; }
     .product-list-item-component .product-thumb img {
       height: 180px;
       width: 180px; }
@@ -169,10 +188,15 @@ PRODUCT LIST ITEM
     padding-left: 16px; }
     .product-list-item-component .product-list-item-right header {
       float: left;
-      width: 75; }
+      width: 75%; }
+      .product-list-item-component .product-list-item-right header .product-title {
+        padding-right: 16px; }
     .product-list-item-component .product-list-item-right address {
       float: left;
-      width: 25; }
+      width: 25%;
+      font-size: 12px;
+      color: #999999;
+      line-height: 30px; }
 
 .icon-freeshipping-active {
   display: inline-block;
@@ -211,8 +235,7 @@ PRODUCT LIST ITEM
   font-size: 46px; }
 
 .product-detail-left .product-thumb {
-  max-width: 680px;
-  padding: 16px; }
+  max-width: 680px; }
 
 .product-detail-left img {
   width: 100%; }

@@ -83,8 +83,31 @@ button {
     background-color: darken($blue, 15%);
   }
 }
+a {
+  color: $blue;
+  text-decoration: none;
+  &:hover {
+    color: lighten($blue, 15%);
+  }
+}
+.loading {
+  @extend %notification;
+}
+.error {
+  @extend %notification;
+  color: #fa8888;
+}
 
-//HEADER Component
+//Landing
+.landing {
+  @extend .header-container;
+  padding: 80px 0;
+  line-height: 40px;
+  font-size: 12px;
+  color: $dark;
+}
+
+//HEADER
 .header-component {
   background: $yellow;
   padding: 7px 0;
@@ -96,7 +119,6 @@ button {
 .page-container {
   @extend .header-container;
 }
-
 .logo {
   width: 10%;
   float: left;
@@ -143,14 +165,6 @@ button {
   }
 }
 
-.loading {
-  @extend %notification;
-}
-.error {
-  @extend %notification;
-  color: #fa8888;
-}
-
 /***
   RESULT PAGE
 ***/
@@ -172,33 +186,41 @@ button {
   }
 }
 
-/**
-PRODUCT LIST ITEM
-**/
-
+//Product
 .product-title {
   font-weight: normal;
   font-size: 18px;
+  line-height: 150%;
+  color: $dark;
+  a {
+    color: $dark;
+    text-decoration: none;
+    &:hover {
+      color: lighten($dark, 15%);
+    }
+  }
 }
 .product-price {
   line-height: 30px;
   font-size: 22px;
 }
-
 .product-thumb {
   @include border-radius(4px);
 }
 
 .product-list-item-component {
   background: #fff;
-  padding: $simple-space;
-  min-height: $size-thumb;
   position: relative;
-
+  padding: 0 $simple-space;
+  .product-list-item-content {
+    min-height: $size-thumb;
+    border-bottom: solid 1px $light-gray;
+    padding: $simple-space 0;
+  }
   .product-thumb {
     position: absolute;
-    top: $simple-space;
-    left: $simple-space;
+    top: 0;
+    left: 0;
     img {
       height: $size-thumb;
       width: $size-thumb;
@@ -214,11 +236,17 @@ PRODUCT LIST ITEM
     padding-left: $simple-space;
     header {
       float: left;
-      width: (100*6)/8;
+      width: 100% *6/8;
+      .product-title {
+        padding-right: $simple-space;
+      }
     }
     address {
       float: left;
-      width: (100*2)/8;
+      width: 100% *2/8;
+      font-size: 12px;
+      color: $gray;
+      line-height: 30px;
     }
   }
 }
@@ -233,7 +261,6 @@ PRODUCT LIST ITEM
 }
 
 // PRODUCT DETAIL
-
 .product-detail {
   @extend .page-container;
 
@@ -274,7 +301,6 @@ PRODUCT LIST ITEM
 .product-detail-left {
   .product-thumb {
     max-width: 680px;
-    padding: $simple-space;
   }
   img {
     width: 100%;
@@ -295,7 +321,7 @@ PRODUCT LIST ITEM
     word-break: break-word;
   }
 }
-
+//footer
 .footerComponent {
   padding: 70px $simple-space $simple-space $simple-space;
   text-align: center;

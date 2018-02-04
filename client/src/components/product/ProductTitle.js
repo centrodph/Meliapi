@@ -1,10 +1,13 @@
 import React from 'react';
-const ProductTitle = ({ title, onClick }) => {
-	return (
-		<h1 className="product-title" onClick={onClick}>
-			{title}
-		</h1>
-	);
+import { Link } from 'react-router-dom';
+
+const ProductTitle = ({ title, onClick, to }) => {
+  const display = to ? <Link to={to}>{title}</Link> : title;
+  return (
+    <h1 className="product-title" onClick={onClick}>
+      {display}
+    </h1>
+  );
 };
 
 export default ProductTitle;
