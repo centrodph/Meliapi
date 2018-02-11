@@ -28,6 +28,8 @@ https://api.mercadolibre.com/categories/MLA9484
 
 # TODO
 
+. ES6 on server side
+
 . Server side rending
 
 . SEO
